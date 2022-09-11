@@ -334,7 +334,7 @@ abstract class BaseSerializationTest extends TestCase
         $serialized  = $serializer->serialize($accounts, $this->getFormat(), null, sprintf('array<%s>', PersonAccountWithParent::class));
         $deserialized = $serializer->deserialize($serialized, sprintf('array<%s>', PersonAccountWithParent::class), $this->getFormat());
 
-        $this->assertEquals(1, count($deserialized));
+        $this->assertCount(1, $deserialized);
         $this->assertEquals($accountNotExpired->name, $deserialized[0]->name);
     }
 
@@ -359,7 +359,7 @@ abstract class BaseSerializationTest extends TestCase
         $serialized  = $serializer->serialize($accounts, $this->getFormat(), null, sprintf('array<%s>', PersonAccountWithParent::class));
         $deserialized = $serializer->deserialize($serialized, sprintf('array<%s>', PersonAccountWithParent::class), $this->getFormat());
 
-        $this->assertEquals(1, count($deserialized));
+        $this->assertCount(1, $deserialized);
         $this->assertEquals($accountNotExpired->name, $deserialized[0]->name);
     }
 
@@ -384,7 +384,7 @@ abstract class BaseSerializationTest extends TestCase
         $serialized  = $serializer->serialize($accounts, $this->getFormat(), null, sprintf('array<%s>', PersonAccountOnParent::class));
         $deserialized = $serializer->deserialize($serialized, sprintf('array<%s>', PersonAccountOnParent::class), $this->getFormat());
 
-        $this->assertEquals(1, count($deserialized));
+        $this->assertCount(1, $deserialized);
         $this->assertEquals($accountNotExpired->name, $deserialized[0]->name);
     }
 

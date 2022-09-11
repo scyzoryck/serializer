@@ -420,7 +420,6 @@ class XmlSerializationTest extends BaseSerializationTest
 
                 $metadata = new StaticPropertyMetadata(get_class($author), 'foo', $author);
                 $metadata->xmlNamespace = $classMetadata->xmlRootNamespace;
-                $metadata->xmlNamespace = $classMetadata->xmlRootNamespace;
 
                 $visitor->visitProperty($metadata, $author);
             }
