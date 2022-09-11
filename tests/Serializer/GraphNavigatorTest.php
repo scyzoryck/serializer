@@ -80,7 +80,7 @@ class GraphNavigatorTest extends TestCase
 
         $this->context->expects($this->once())
             ->method('getExclusionStrategy')
-            ->will($this->returnValue($exclusionStrategy));
+            ->willReturn($exclusionStrategy);
 
         $navigator = new SerializationGraphNavigator($this->metadataFactory, $this->handlerRegistry, $this->accessor, $this->dispatcher);
         $navigator->initialize($this->serializationVisitor, $this->context);
@@ -110,7 +110,7 @@ class GraphNavigatorTest extends TestCase
 
         $this->context->expects($this->once())
             ->method('getExclusionStrategy')
-            ->will($this->returnValue($exclusionStrategy));
+            ->willReturn($exclusionStrategy);
 
         $navigator = new DeserializationGraphNavigator($this->metadataFactory, $this->handlerRegistry, $this->objectConstructor, $this->accessor, $this->dispatcher);
         $navigator->initialize($this->deserializationVisitor, $this->context);

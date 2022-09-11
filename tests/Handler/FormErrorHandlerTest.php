@@ -292,10 +292,10 @@ class FormErrorHandlerTest extends TestCase
 
         $form->expects($this->any())
             ->method('getName')
-            ->will($this->returnValue($name));
+            ->willReturn($name);
         $form->expects($this->any())
             ->method('getConfig')
-            ->will($this->returnValue($config));
+            ->willReturn($config);
 
         return $form;
     }

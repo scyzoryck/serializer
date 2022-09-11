@@ -115,7 +115,7 @@ class DoctrinePHPCRDriverTest extends TestCase
         $registry = $this->getMockBuilder(ManagerRegistry::class)->getMock();
         $registry->expects($this->atLeastOnce())
             ->method('getManagerForClass')
-            ->will($this->returnValue($this->getDocumentManager()));
+            ->willReturn($this->getDocumentManager());
 
         return new DoctrinePHPCRTypeDriver(
             $this->getAnnotationDriver(),

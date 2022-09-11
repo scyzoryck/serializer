@@ -57,7 +57,7 @@ class ContextTest extends TestCase
 
                 return true;
             }))
-            ->will($this->returnValue(false));
+            ->willReturn(false);
 
         $exclusionStrategy->expects($this->any())
             ->method('shouldSkipProperty')
@@ -83,7 +83,7 @@ class ContextTest extends TestCase
 
                 return true;
             }))
-            ->will($this->returnValue(false));
+            ->willReturn(false);
 
         $serializer = SerializerBuilder::create()->build();
 
@@ -100,7 +100,7 @@ class ContextTest extends TestCase
         $exclusionStrategy = $this->getMockBuilder('JMS\Serializer\Exclusion\ExclusionStrategyInterface')->getMock();
         $exclusionStrategy->expects($this->any())
             ->method('shouldSkipClass')
-            ->will($this->returnCallback(static function (ClassMetadata $classMetadata, SerializationContext $context) use ($self, $object, $child) {
+            ->willReturnCallback(static function (ClassMetadata $classMetadata, SerializationContext $context) use ($self, $object, $child) {
                 $stack = $context->getMetadataStack();
 
                 if ($object === $context->getObject()) {
@@ -114,11 +114,11 @@ class ContextTest extends TestCase
                 }
 
                 return false;
-            }));
+            });
 
         $exclusionStrategy->expects($this->any())
             ->method('shouldSkipProperty')
-            ->will($this->returnCallback(static function (PropertyMetadata $propertyMetadata, SerializationContext $context) use ($self) {
+            ->willReturnCallback(static function (PropertyMetadata $propertyMetadata, SerializationContext $context) use ($self) {
                 $stack = $context->getMetadataStack();
 
                 if ('JMS\Serializer\Tests\Fixtures\Node' === $propertyMetadata->class && 'children' === $propertyMetadata->name) {
@@ -134,7 +134,7 @@ class ContextTest extends TestCase
                 }
 
                 return false;
-            }));
+            });
 
         $serializer = SerializerBuilder::create()->build();
         $serializer->serialize($object, 'json', SerializationContext::create()->addExclusionStrategy($exclusionStrategy));

@@ -143,7 +143,7 @@ class SerializerBuilderTest extends TestCase
         $contextFactoryMock
             ->expects($this->once())
             ->method('createSerializationContext')
-            ->will($this->returnValue($context));
+            ->willReturn($context);
 
         $this->builder->setSerializationContextFactory($contextFactoryMock);
 
@@ -162,7 +162,7 @@ class SerializerBuilderTest extends TestCase
         $contextFactoryMock
             ->expects($this->once())
             ->method('createDeserializationContext')
-            ->will($this->returnValue($context));
+            ->willReturn($context);
 
         $this->builder->setDeserializationContextFactory($contextFactoryMock);
 
